@@ -8,3 +8,6 @@ yarn-error.log
 
 # modules
 node_modules/
+
+# certificates
+certs/

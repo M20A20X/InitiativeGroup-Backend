@@ -4,8 +4,24 @@
     "type": "module",
     "main": "src/app.js",
     "dependencies": {},
-    "devDependencies": {},
-    "scripts": {},
+    "devDependencies": {
+        "@babel/core": "^7.18.9",
+        "@babel/eslint-parser": "^7.18.9",
+        "@babel/preset-env": "^7.18.9",
+        "eslint": "^8.20.0",
+        "eslint-config-prettier": "^8.5.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^13.0.3",
+        "prettier": "^2.7.1"
+    },
+    "scripts": {
+        "lint": "eslint --cache",
+        "lint:fix": "eslint --fix",
+        "format": "prettier --write --cache"
+    },
+    "imports": {
+        "#*": "./src/*"
+    },
     "repository": "https://github.com/M20A20X/Cooperation-Backend.git",
     "author": "Maksym Shapovalov <maks0681912507@gmail.com>",
     "license": "MIT"
