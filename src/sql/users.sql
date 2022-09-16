@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE `tblUsers`
 (
     `id` INT NOT NULL AUTO_INCREMENT
@@ -36,3 +37,14 @@ CREATE TABLE `tblUsers`
 
 INSERT INTO `tblUsers` (`onlineStatus`,`email`,`lastLogin`,`login`,`name`,`password`,`patronymic`,`surname`)
 VALUES (0,'email@email.com',NOW(),'M20A20X','Ім''я','А%м7kl','Побатькові','Прізвище');
+
+--AUX
+DELIMITER $$
+
+CREATE PROCEDURE sp_getTestById(testId INT)
+BEGIN
+    SELECT * FROM tblTests t
+    WHERE t.id = testId;
+END $$
+
+DELIMITER ;

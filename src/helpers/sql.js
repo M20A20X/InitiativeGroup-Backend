@@ -15,11 +15,11 @@ Params:
         reject <function>       promise reject
 */
 export const querySql = (
-    sqlPool = {},
-    sql = '',
-    handleResult = () => {},
+    sqlPool = {}, 
+    sql = '', 
+    handleResult = () => {}, 
     includeHeader = false
-) =>
+    ) =>
     new Promise((fulfill, reject) => {
         sqlPool.query(sql, (error, result) => {
             if (error) {
