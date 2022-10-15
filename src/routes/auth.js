@@ -1,14 +1,10 @@
-// (YOUR) Custom router config file //
+import { createChildRouter } from '#helpers/router.js';
+import { authController } from '#controllers/authController.js';
 
-// Child router creator, helper.
-import { createChildRouter } from '../helpers/router.js';
-
-// Controller.
-import { authController } from '../controllers/auth.js';
-
-// (YOUR) Custom, child router.
 const authRouter = createChildRouter();
 
-authRouter.get('/', authController.get);
+authRouter.post('/login', authController.login);
+authRouter.post('/registration', authController.registration);
+authRouter.get('/users', authController.getUsers);
 
 export { authRouter };

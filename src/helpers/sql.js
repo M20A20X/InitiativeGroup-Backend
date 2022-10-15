@@ -15,21 +15,17 @@ Params:
         reject <function>       promise reject
 */
 export const querySql = (
-    sqlPool = {}, 
-    sql = '', 
-    handleResult = () => {}, 
-    includeHeader = false
-    ) =>
+    sqlPool = {},
+    sql = '',
+    handleResult = () => {}
+    //includeHeader = false
+) =>
     new Promise((fulfill, reject) => {
         sqlPool.query(sql, (error, result) => {
             if (error) {
                 reject(error);
             }
 
-            handleResult(
-                fulfill,
-                includeHeader ? result : result[0][0],
-                reject
-            );
+            handleResult(fulfill, result, reject);
         });
     });

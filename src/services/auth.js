@@ -1,15 +1,18 @@
-import { mySqlPool } from '../config/mySql.js';
-import { querySql } from '../helpers/sql.js';
+import { mySqlPool } from '#config/mySql.js';
+import { querySql } from '#helpers/sql.js';
 
 class AuthService {
-    // (YOUR) custom service logic (of course, YOU can have different set of features).
-    async get(login, password) {
-        // Custom logic...
-        const sql = `SELECT login, password FROM \`tblUsers\` WHERE login AS ${login} AND password AS ${password}`;
+    async login(email) {
+        const sql = `CALL sp_getUserByEmail('${email}');`;
+        return querySql(mySqlPool, sql, (fulfill, result) => fulfill(result));
+    }
 
-        return querySql(mySqlPool, sql, (fulfill, result) => fulfill(result))
+    async registration(email, login, name, password, telephone) {
+        //const sql = `CALL sp_regUser('${email1}', '${login1}', '${name1}', '${password1}', '${telephone1}');`;
+        const sql = `INSERT INTO \`tblUsers\` (\`onlineStatus\`, \`email\`, \`lastLogin\`, \`login\`, \`name\`, \`password\`,\`patronymic\`, \`surname\`, \`telephone\`)
+             VALUES (0, '${email}',NOW(),'${login}','${name}','${password}','Побатькові', 'Прізвище','${telephone}');`;
+        return querySql(mySqlPool, sql, (fulfill, result) => fulfill(result));
     }
 }
 
-// (YOUR) Instance of service.
 export const authService = new AuthService();

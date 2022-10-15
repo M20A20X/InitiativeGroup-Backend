@@ -1,6 +1,3 @@
-// (YOUR) Sample controller //
-
-// (YOUR) Сustom service.
 import { sampleService } from '../services/sample.js';
 
 export class SampleController {
