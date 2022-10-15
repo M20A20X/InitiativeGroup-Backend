@@ -4,6 +4,7 @@ import { projectsController } from '#controllers/projects.js';
 
 const projectsRouter = createChildRouter();
 
-projectsRouter.get('/', projectsController.getProjects);
+projectsRouter.get('/getProjects', projectsController.getProjects);
+projectsRouter.post('/postProjects', projectsController.postProjectBody);
 
 export { projectsRouter };

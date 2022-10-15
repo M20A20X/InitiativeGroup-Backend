@@ -1,4 +1,5 @@
 import { mySqlPool } from '#config/mySql.js';
+import { querySql } from '#helpers/sql.js';
 
 class NewsService {
     async getNews() {
@@ -13,6 +14,10 @@ class NewsService {
                 fulfill(result);
             });
         });
+    }
+    async PostNews(text, imageUrl) {
+        const sql = `call sp_PostNews('${text}', '${imageUrl}');`;
+        return querySql(mySqlPool, sql, (fulfill, result) => fulfill(result));
     }
 }
 

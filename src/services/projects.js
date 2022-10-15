@@ -1,4 +1,5 @@
 import { mySqlPool } from '#config/mySql.js';
+import { querySql } from '#helpers/sql.js';
 
 class ProjectsService {
     async getProjects() {
@@ -13,6 +14,10 @@ class ProjectsService {
                 fulfill(result);
             });
         });
+    }
+    async PostProjects(text, imageUrl) {
+        const sql = `call sp_PostProjects('${text}', '${imageUrl}');`;
+        return querySql(mySqlPool, sql, (fulfill, result) => fulfill(result));
     }
 }
 

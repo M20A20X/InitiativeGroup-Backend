@@ -4,6 +4,7 @@ import { studyController } from '#controllers/study.js';
 
 const studyRouter = createChildRouter();
 
-studyRouter.get('/', studyController.getStudy);
+studyRouter.get('/getStudy', studyController.getStudy);
+studyRouter.post('/postStudy', studyController.postStudyBody);
 
 export { studyRouter };

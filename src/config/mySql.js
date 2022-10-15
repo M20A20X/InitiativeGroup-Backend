@@ -4,7 +4,7 @@ import { sep } from 'path';
 
 const KEYS_FILE = 'keys.json';
 const readCertFile = (file) =>
-    readFileSync(`${process.env.PWD}${sep}certs${sep}${file}`, 'utf8');
+    readFileSync(`${process.cwd()}${sep}certs${sep}${file}`, 'utf8');
 
 const certsJson = JSON.parse(readCertFile(KEYS_FILE));
 

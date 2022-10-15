@@ -9,6 +9,15 @@ export class StudyController {
             res.status(500).json(error.code);
         }
     }
+    async postStudyBody(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        try {
+            const { text, imageUrl } = req.body;
+            res.status(200).json(await studyService.PostStudy(text, imageUrl));
+        } catch (error) {
+            res.status(500).json(error.code);
+        }
+    }
 }
 
 export const studyController = new StudyController();

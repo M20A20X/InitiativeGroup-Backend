@@ -1,4 +1,5 @@
 import { mySqlPool } from '#config/mySql.js';
+import { querySql } from '#helpers/sql.js';
 
 class StudyService {
     async getStudy() {
@@ -13,6 +14,10 @@ class StudyService {
                 fulfill(result);
             });
         });
+    }
+    async PostStudy(text, imageUrl) {
+        const sql = `call sp_PostStudy('${text}', '${imageUrl}');`;
+        return querySql(mySqlPool, sql, (fulfill, result) => fulfill(result));
     }
 }
 

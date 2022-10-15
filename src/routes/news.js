@@ -4,6 +4,7 @@ import { newsController } from '#controllers/news.js';
 
 const newsRouter = createChildRouter();
 
-newsRouter.get('/', newsController.getNews);
+newsRouter.get('/getNews', newsController.getNews);
+newsRouter.post('/postNews', newsController.postNewsBody);
 
 export { newsRouter };
