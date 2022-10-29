@@ -26,10 +26,10 @@ class AuthController {
             const dbQueryResult = await authService.login(email);
             const validPassword = bcrypt.compareSync(
                 password,
-                dbQueryResult[0][0].password
+                dbQueryResult[0].password
             );
             if (!validPassword) {
-                return res.status(400).json({ message: 'wrong password' });
+                res.status(400).json({ message: 'wrong password' });
             } else {
                 res.json(dbQueryResult);
             }

@@ -3,7 +3,7 @@ import { querySql } from '#helpers/sql.js';
 
 class AuthService {
     async login(email) {
-        const sql = `CALL sp_getUserByEmail('${email}');`;
+        const sql = `SELECT * FROM \`tblUsers\` \`u\` WHERE \`u\`.\`email\` = '${email}'`;
         return querySql(mySqlPool, sql, (fulfill, result) => fulfill(result));
     }
 
