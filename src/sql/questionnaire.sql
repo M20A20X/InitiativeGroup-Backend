@@ -23,3 +23,11 @@ CREATE TABLE Cases (
         CONSTRAINT Cases_pk PRIMARY KEY (`id`)
 );
 
+
+CREATE TABLE tblInfo (
+                         id int NOT NULL,
+                         text varchar(1000) NOT NULL,
+                         imgUrl varchar(200) NOT NULL,
+                         type int NOT NULL, # TODO: 1 - News, 2 - Study, 3 - Projects
+                         CONSTRAINT tblInfo_pk PRIMARY KEY (id)
+);

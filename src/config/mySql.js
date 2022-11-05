@@ -4,13 +4,13 @@ import { sep } from 'path';
 
 const KEYS_FILE = 'keys.json';
 const readCertFile = (file) =>
-    readFileSync(`${process.env.PWD}${sep}certs${sep}${file}`, 'utf8');
+    readFileSync(`${process.cwd()}${sep}certs${sep}${file}`, 'utf8');
 
 const certsJson = JSON.parse(readCertFile(KEYS_FILE));
 
 // MySql pool.
 export const mySqlPool = mysql2.createPool({
-    connectionLimit: 7,
+    connectionLimit: 1000,
     host: '34.118.106.53',
     user: 'root',
     ssl: {
